@@ -1,14 +1,14 @@
 ## Thực hiện ghi (hoạt động ghi) đa luồng trên SQlite vào gần như cùng một lúc / Almost row level lock performance.
 Gửi các bạn,    
-Như các bạn đã biết, Cơ sở dữ liệu đơn luồng SQLite được mắc định đưa vào hệ điều hành Linux. Đã có rất nhiều nghiên cứu về SQlite để lưu trữ dữ liệu. Nghiên cứu về cách truy cập SQlite với hành động ghi đa luồng. Tôi sẽ chia sẻ một nghiên cứu nhỏ của tôi về cách để thực hiện được việc ghi đa luông trong CSDL SQlite.  
+Như các bạn đã biết, Cơ sở dữ liệu đơn luồng SQLite được nhúng mặc định vào hệ điều hành Linux. Đã có rất nhiều nghiên cứu về SQlite để lưu trữ dữ liệu. Nghiên cứu về cách truy cập SQlite với hành động ghi đa luồng. Tôi sẽ chia sẻ một nghiên cứu nhỏ của tôi về cách để thực hiện được việc ghi đa luông trong CSDL SQlite.  
 - Hãy tìm hiểu về ưu và khuyết điểm của SQlite
 
 #### Ưu điểm:
 - SQlite được viết trên ngôn ngữ C, vì thế nó có thể truy cập ổ cứng, bộ nhớ và xử lí dữ liệu rất nhanh. Hãy thử nghĩ nếu bạn đang dùng SSD. :v
 - SQlite hỗ trợ bộ nhớ trong,trên bộ nhớ trong, SQlite gần như nhanh gấp 2 lần. Nếu bạn hiểu về việc phân trang, nó là đủ nhanh.
-- SQlite là CSDL đơn luồng nên rủi ro về sai lạc dữ liệu là rất thấp.
+- SQlite là CSDL đơn luồng nên rủi ro về hỏng dữ liệu là rất thấp.
 - SQlite lưu dữ liệu trên  một file duy nhất nên chúng ta có thể di chuyển và truy cập trên nên tảng khác một cách rất dễ dàng.
-- SQLite is 0 administration for end user. 
+- SQLite không yêu cầu thành phần quản trị đối với người dùng cuối.
 - Đa nền tảng! SQLite có thể được dùng trên nhiều nền tảng khác nhau.
 - MÃ NGUỒN CỦA NÓ MỞ !!!
 - Vân vân...
